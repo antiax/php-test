@@ -15,6 +15,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
+    <img src="<?php echo $result['avatar_path'] ?>" class="img-thumbnail" alt="no picture">
     <h5 class="card-title"><?php echo $result['firstname'] . " " . $result['lastname']; ?></h5>
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $result['name']; ?></h6>
     <p class="card-text">Date of birth: <?php echo $result['dateofbirth']; ?></p>

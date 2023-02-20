@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/site.css" />
 </head>
   <body>
-    <div class="container">
+    
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
           <div class="d-flex justify-content-between w-100">
@@ -53,5 +53,4 @@
           </div>
         </div>
       </nav>
-      </br>
-      </br>
+      <div class="container mt-3">

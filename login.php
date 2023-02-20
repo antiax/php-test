@@ -44,6 +44,6 @@
     <input type="submit" value="Login" class="btn btn-primary btn-block"></br></br>
     <a href="#"> Forgot Password</a>
 
-</form></br></br></br></br>
+</form>
 
 <?php require_once 'includes/footer.php'; ?>
