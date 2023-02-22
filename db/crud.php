@@ -39,7 +39,7 @@
 
         public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty, $avatar_path){
             try{
-                if ($avatar_path == null){
+                if (is_null($avatar_path)){
                     $sql = "UPDATE `attendee` SET 
                                 `firstname`=:fname,
                                 `lastname`=:lname,
@@ -48,17 +48,7 @@
                                 `contactnumber`=:contact,
                                 `specialty_id`=:specialty
                             WHERE attendee_id = :id";
-
-                    $stmt = $this->db->prepare($sql);
-
-                    $stmt->bindparam(':id', $id);
-                    $stmt->bindparam(':fname', $fname);
-                    $stmt->bindparam(':lname', $lname);
-                    $stmt->bindparam(':dob', $dob);
-                    $stmt->bindparam(':email', $email);
-                    $stmt->bindparam(':contact', $contact);
-                    $stmt->bindparam(':specialty', $specialty);
-                }else{
+                } else {
                     $sql = "UPDATE `attendee` SET 
                                 `firstname`=:fname,
                                 `lastname`=:lname,
@@ -68,16 +58,19 @@
                                 `specialty_id`=:specialty,
                                 `avatar_path`=:avatar_path
                             WHERE attendee_id = :id";
+                }
 
-                    $stmt = $this->db->prepare($sql);
+                $stmt = $this->db->prepare($sql);
 
-                    $stmt->bindparam(':id', $id);
-                    $stmt->bindparam(':fname', $fname);
-                    $stmt->bindparam(':lname', $lname);
-                    $stmt->bindparam(':dob', $dob);
-                    $stmt->bindparam(':email', $email);
-                    $stmt->bindparam(':contact', $contact);
-                    $stmt->bindparam(':specialty', $specialty);
+                $stmt->bindparam(':id', $id);
+                $stmt->bindparam(':fname', $fname);
+                $stmt->bindparam(':lname', $lname);
+                $stmt->bindparam(':dob', $dob);
+                $stmt->bindparam(':email', $email);
+                $stmt->bindparam(':contact', $contact);
+                $stmt->bindparam(':specialty', $specialty);
+                
+                if (!is_null($avatar_path)){
                     $stmt->bindparam(':avatar_path', $avatar_path);
                 }
                 // execute statement
