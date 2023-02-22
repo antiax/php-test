@@ -18,7 +18,7 @@
     
 <h1 class="text-center"><?php echo $title; ?></h1>
 
-    <form method="get" action="editpost.php">
+    <form method="post" action="editpost.php"  enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $attendee['attendee_id'] ?>" />
         <div class="mb-3">
             <label for="firstname">First Name</label>
@@ -52,6 +52,11 @@
             <label for="phone" class="form-label">Contact Number</label>
             <input type="text" class="form-control"  value="<?php echo $attendee['contactnumber'] ?>" id="phone" name="phone" aria-describedby="phoneHelp">
             <div id="phoneHelp" class="form-text">We'll never share your number with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="avatar" class="form-label">Upload Image (Optional)</label>
+            <input type="file" accept="image/*" class="custom-file-input" id="avatar" name="avatar">
+            <!--<label class="custom-file-label">Choose File</label>-->
         </div>
         <div class="d-grid gap-2">
             <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>

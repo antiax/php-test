@@ -37,26 +37,49 @@
             }
         }
 
-        public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty){
+        public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty, $avatar_path){
             try{
-                $sql = "UPDATE `attendee` SET 
+                if ($avatar_path == null){
+                    $sql = "UPDATE `attendee` SET 
                                 `firstname`=:fname,
                                 `lastname`=:lname,
                                 `dateofbirth`=:dob,
                                 `emailadress`=:email,
                                 `contactnumber`=:contact,
                                 `specialty_id`=:specialty
-                     WHERE attendee_id = :id";
+                            WHERE attendee_id = :id";
 
-                $stmt = $this->db->prepare($sql);
+                    $stmt = $this->db->prepare($sql);
 
-                $stmt->bindparam(':id', $id);
-                $stmt->bindparam(':fname', $fname);
-                $stmt->bindparam(':lname', $lname);
-                $stmt->bindparam(':dob', $dob);
-                $stmt->bindparam(':email', $email);
-                $stmt->bindparam(':contact', $contact);
-                $stmt->bindparam(':specialty', $specialty);
+                    $stmt->bindparam(':id', $id);
+                    $stmt->bindparam(':fname', $fname);
+                    $stmt->bindparam(':lname', $lname);
+                    $stmt->bindparam(':dob', $dob);
+                    $stmt->bindparam(':email', $email);
+                    $stmt->bindparam(':contact', $contact);
+                    $stmt->bindparam(':specialty', $specialty);
+                }else{
+                    $sql = "UPDATE `attendee` SET 
+                                `firstname`=:fname,
+                                `lastname`=:lname,
+                                `dateofbirth`=:dob,
+                                `emailadress`=:email,
+                                `contactnumber`=:contact,
+                                `specialty_id`=:specialty,
+                                `avatar_path`=:avatar_path
+                            WHERE attendee_id = :id";
+
+                    $stmt = $this->db->prepare($sql);
+
+                    $stmt->bindparam(':id', $id);
+                    $stmt->bindparam(':fname', $fname);
+                    $stmt->bindparam(':lname', $lname);
+                    $stmt->bindparam(':dob', $dob);
+                    $stmt->bindparam(':email', $email);
+                    $stmt->bindparam(':contact', $contact);
+                    $stmt->bindparam(':specialty', $specialty);
+                    $stmt->bindparam(':avatar_path', $avatar_path);
+                }
                 // execute statement
                 $stmt->execute();
                 return true;
